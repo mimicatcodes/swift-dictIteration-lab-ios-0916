@@ -140,12 +140,35 @@ for (grade, score) in examResults {
 /*: question10
  ### 10. Find which grade got the highest score! Iterate through the dictionary to find the highest score, then print the message "Grade <Grade> got the highest score with <Score>!" to the console.
  */
+var bestScore: String = ""
+var bestGrade: Int = 100
+
+
 for (grade, score) in examResults {
-    if score == "A" {
-        print("Grade \(grade) got the highest score with \(score)")
-    }
+    switch score {
+        case "A":
+            bestScore = score
+            bestGrade = grade
+        case "B":
+            if bestScore != "A" {
+                bestScore = score
+                bestGrade = grade
+        }
+        case "C":
+           if (bestScore != "A") && (bestScore != "B") {
+                bestScore = score
+                bestGrade = grade
+       }
+    default:
+        bestScore = score
+        bestGrade = grade
+        
+        }
+    
     
 }
+
+print("Grade \(bestGrade) got the highest score with \(bestScore)!")
 
 
 
